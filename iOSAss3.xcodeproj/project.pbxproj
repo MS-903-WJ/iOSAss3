@@ -7,15 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5234D2892A0219E60040DEA0 /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5234D2882A0219E60040DEA0 /* HomeController.swift */; };
 		528BF5102A00865A00729C05 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 528BF50F2A00865A00729C05 /* AppDelegate.swift */; };
 		528BF5122A00865A00729C05 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 528BF5112A00865A00729C05 /* SceneDelegate.swift */; };
 		528BF5142A00865A00729C05 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 528BF5132A00865A00729C05 /* ViewController.swift */; };
 		528BF5172A00865A00729C05 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 528BF5152A00865A00729C05 /* Main.storyboard */; };
 		528BF5192A00865D00729C05 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 528BF5182A00865D00729C05 /* Assets.xcassets */; };
 		528BF51C2A00865D00729C05 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 528BF51A2A00865D00729C05 /* LaunchScreen.storyboard */; };
+		52DDB42F2A0B36AC00D704AF /* AddController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DDB42E2A0B36AC00D704AF /* AddController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5234D2882A0219E60040DEA0 /* HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
 		528BF50C2A00865A00729C05 /* iOSAss3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOSAss3.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		528BF50F2A00865A00729C05 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		528BF5112A00865A00729C05 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -24,6 +27,7 @@
 		528BF5182A00865D00729C05 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		528BF51B2A00865D00729C05 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		528BF51D2A00865D00729C05 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		52DDB42E2A0B36AC00D704AF /* AddController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -37,6 +41,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5234D2872A0219C50040DEA0 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				528BF5132A00865A00729C05 /* ViewController.swift */,
+				5234D2882A0219E60040DEA0 /* HomeController.swift */,
+				52DDB42E2A0B36AC00D704AF /* AddController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 		528BF5032A00865A00729C05 = {
 			isa = PBXGroup;
 			children = (
@@ -56,9 +70,9 @@
 		528BF50E2A00865A00729C05 /* iOSAss3 */ = {
 			isa = PBXGroup;
 			children = (
+				5234D2872A0219C50040DEA0 /* Controller */,
 				528BF50F2A00865A00729C05 /* AppDelegate.swift */,
 				528BF5112A00865A00729C05 /* SceneDelegate.swift */,
-				528BF5132A00865A00729C05 /* ViewController.swift */,
 				528BF5152A00865A00729C05 /* Main.storyboard */,
 				528BF5182A00865D00729C05 /* Assets.xcassets */,
 				528BF51A2A00865D00729C05 /* LaunchScreen.storyboard */,
@@ -139,6 +153,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				528BF5142A00865A00729C05 /* ViewController.swift in Sources */,
+				52DDB42F2A0B36AC00D704AF /* AddController.swift in Sources */,
+				5234D2892A0219E60040DEA0 /* HomeController.swift in Sources */,
 				528BF5102A00865A00729C05 /* AppDelegate.swift in Sources */,
 				528BF5122A00865A00729C05 /* SceneDelegate.swift in Sources */,
 			);
