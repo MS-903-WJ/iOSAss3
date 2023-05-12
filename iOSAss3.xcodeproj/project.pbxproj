@@ -14,12 +14,15 @@
 		528BF5172A00865A00729C05 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 528BF5152A00865A00729C05 /* Main.storyboard */; };
 		528BF5192A00865D00729C05 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 528BF5182A00865D00729C05 /* Assets.xcassets */; };
 		528BF51C2A00865D00729C05 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 528BF51A2A00865D00729C05 /* LaunchScreen.storyboard */; };
+		529CEDC22A0DF4B000DF73DE /* AccountTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529CEDC12A0DF4B000DF73DE /* AccountTableViewCell.swift */; };
 		52DDB42F2A0B36AC00D704AF /* AddController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DDB42E2A0B36AC00D704AF /* AddController.swift */; };
+		52DDB4342A0C99A600D704AF /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 52DDB4332A0C99A600D704AF /* RealmSwift */; };
+		52DDB4362A0C9CC300D704AF /* WalletController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DDB4352A0C9CC300D704AF /* WalletController.swift */; };
+		52DDB4382A0CA9D300D704AF /* SlideUpPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DDB4372A0CA9D300D704AF /* SlideUpPresentationController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		5234D2882A0219E60040DEA0 /* HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
-		528BF50C2A00865A00729C05 /* iOSAss3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOSAss3.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		528BF50F2A00865A00729C05 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		528BF5112A00865A00729C05 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		528BF5132A00865A00729C05 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -27,7 +30,11 @@
 		528BF5182A00865D00729C05 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		528BF51B2A00865D00729C05 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		528BF51D2A00865D00729C05 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		529CEDBA2A0DD82300DF73DE /* iOSAss3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOSAss3.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		529CEDC12A0DF4B000DF73DE /* AccountTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountTableViewCell.swift; sourceTree = "<group>"; };
 		52DDB42E2A0B36AC00D704AF /* AddController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddController.swift; sourceTree = "<group>"; };
+		52DDB4352A0C9CC300D704AF /* WalletController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletController.swift; sourceTree = "<group>"; };
+		52DDB4372A0CA9D300D704AF /* SlideUpPresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideUpPresentationController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,6 +42,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52DDB4342A0C99A600D704AF /* RealmSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -47,6 +55,9 @@
 				528BF5132A00865A00729C05 /* ViewController.swift */,
 				5234D2882A0219E60040DEA0 /* HomeController.swift */,
 				52DDB42E2A0B36AC00D704AF /* AddController.swift */,
+				52DDB4352A0C9CC300D704AF /* WalletController.swift */,
+				52DDB4372A0CA9D300D704AF /* SlideUpPresentationController.swift */,
+				529CEDC12A0DF4B000DF73DE /* AccountTableViewCell.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -55,16 +66,8 @@
 			isa = PBXGroup;
 			children = (
 				528BF50E2A00865A00729C05 /* iOSAss3 */,
-				528BF50D2A00865A00729C05 /* Products */,
+				529CEDBA2A0DD82300DF73DE /* iOSAss3.app */,
 			);
-			sourceTree = "<group>";
-		};
-		528BF50D2A00865A00729C05 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				528BF50C2A00865A00729C05 /* iOSAss3.app */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		528BF50E2A00865A00729C05 /* iOSAss3 */ = {
@@ -97,8 +100,11 @@
 			dependencies = (
 			);
 			name = iOSAss3;
+			packageProductDependencies = (
+				52DDB4332A0C99A600D704AF /* RealmSwift */,
+			);
 			productName = iOSAss3;
-			productReference = 528BF50C2A00865A00729C05 /* iOSAss3.app */;
+			productReference = 529CEDBA2A0DD82300DF73DE /* iOSAss3.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -125,7 +131,10 @@
 				Base,
 			);
 			mainGroup = 528BF5032A00865A00729C05;
-			productRefGroup = 528BF50D2A00865A00729C05 /* Products */;
+			packageReferences = (
+				52DDB4322A0C99A600D704AF /* XCRemoteSwiftPackageReference "realm-cocoa" */,
+			);
+			productRefGroup = 528BF5032A00865A00729C05;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -152,11 +161,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52DDB4382A0CA9D300D704AF /* SlideUpPresentationController.swift in Sources */,
+				52DDB4362A0C9CC300D704AF /* WalletController.swift in Sources */,
 				528BF5142A00865A00729C05 /* ViewController.swift in Sources */,
 				52DDB42F2A0B36AC00D704AF /* AddController.swift in Sources */,
 				5234D2892A0219E60040DEA0 /* HomeController.swift in Sources */,
 				528BF5102A00865A00729C05 /* AppDelegate.swift in Sources */,
 				528BF5122A00865A00729C05 /* SceneDelegate.swift in Sources */,
+				529CEDC22A0DF4B000DF73DE /* AccountTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -372,6 +384,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		52DDB4322A0C99A600D704AF /* XCRemoteSwiftPackageReference "realm-cocoa" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-cocoa.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		52DDB4332A0C99A600D704AF /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 52DDB4322A0C99A600D704AF /* XCRemoteSwiftPackageReference "realm-cocoa" */;
+			productName = RealmSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 528BF5042A00865A00729C05 /* Project object */;
 }
