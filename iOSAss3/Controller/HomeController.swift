@@ -131,7 +131,7 @@ class HomeController: UIViewController, UITableViewDelegate, UITableViewDataSour
             cell = UITableViewCell(style: .value1, reuseIdentifier: "TransactionCell")
         }
         
-        let dateKey = Array(groupedTransactions.keys)[indexPath.section]
+        let dateKey = sortedTransactionKeys[indexPath.section]
         if let transaction = groupedTransactions[dateKey]?[indexPath.row] {
             if transaction.transactionType == "expense" {
                 cell!.textLabel?.text = "- \(transaction.amount)"
@@ -180,27 +180,42 @@ class HomeController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     @objc func reloadTableView() {
-        print("this is reolad function")
+        print("this is reload function")
+        
         // Refresh the transactions data
         let realm = try! Realm()
         transactions = realm.objects(Transaction.self).sorted(byKeyPath: "date", ascending: false)
+        
+        // Clear the existing groupedTransactions and sortedTransactionKeys
+        groupedTransactions.removeAll()
+        sortedTransactionKeys.removeAll()
+        
+        // Regroup the transactions by date
+        groupTransactionsByDate()
         
         // Reload the tableView data
         tableView.reloadData()
     }
     
     func groupTransactionsByDate() {
+        // Loop through all transactions
         for transaction in transactions {
+            // Get the date of the transaction without the time component
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "yyyy-MM-dd"
-            let dateString = dateFormatter.string(from: transaction.date)
-
-            if groupedTransactions[dateString] == nil {
-                groupedTransactions[dateString] = [transaction]
+            let dateWithoutTime = dateFormatter.string(from: transaction.date)
+            
+            // Check if the date is already in the groupedTransactions dictionary
+            if groupedTransactions[dateWithoutTime] == nil {
+                // If not, create a new array with the current transaction and add it to the dictionary
+                groupedTransactions[dateWithoutTime] = [transaction]
             } else {
-                groupedTransactions[dateString]?.append(transaction)
+                // If yes, append the current transaction to the existing array for that date
+                groupedTransactions[dateWithoutTime]?.append(transaction)
             }
         }
+        
+        // Sort the transaction keys (dates) in descending order
         sortedTransactionKeys = Array(groupedTransactions.keys).sorted(by: { $0 > $1 })
     }
 
@@ -209,7 +224,7 @@ class HomeController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let dateKey = Array(groupedTransactions.keys)[section]
+        let dateKey = sortedTransactionKeys[section]
         return groupedTransactions[dateKey]?.count ?? 0
     }
 

@@ -157,23 +157,6 @@
             </objects>
             <point key="canvasLocation" x="3554.9618320610684" y="-160.56338028169014"/>
         </scene>
-        <!--Item-->
-        <scene sceneID="0pc-cx-Ygv">
-            <objects>
-                <viewController id="7Nk-DZ-t1G" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Epl-cg-PVD">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="ZHq-xD-2ol"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="VPa-du-MK0"/>
-                    <navigationItem key="navigationItem" id="GwE-Dx-nza"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Zr3-rS-ptF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3266" y="1220"/>
-        </scene>
         <!--Wallet Controller-->
         <scene sceneID="Ddi-p5-kGo">
             <objects>
