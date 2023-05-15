@@ -273,11 +273,10 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="br3-YX-1ii">
-                                <rect key="frame" x="89" y="63" width="215" height="32"/>
+                                <rect key="frame" x="125" y="63" width="143" height="32"/>
                                 <segments>
                                     <segment title="Expense"/>
                                     <segment title="Income"/>
-                                    <segment title="Transfer"/>
                                 </segments>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -463,11 +462,6 @@
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                             </view>
                                         </subviews>
-                                    </view>
-                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ep6-2x-IS5" userLabel="Transfer View">
-                                        <rect key="frame" x="8" y="8" width="345" height="221"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     </view>
                                 </subviews>
                                 <viewLayoutGuide key="contentLayoutGuide" id="IGM-gl-VKW"/>
@@ -735,7 +729,6 @@
                         <outlet property="sixButton" destination="43B-c8-6BQ" id="gIQ-5E-gC0"/>
                         <outlet property="subButton" destination="I0m-Eu-Cbu" id="5yE-V3-Ti4"/>
                         <outlet property="threeButton" destination="McF-fe-EH7" id="PoB-8t-Vmf"/>
-                        <outlet property="transferView" destination="ep6-2x-IS5" id="HLH-9V-6EV"/>
                         <outlet property="transportationButton" destination="dtz-Jf-eFT" id="5FQ-PT-8jj"/>
                         <outlet property="twoButton" destination="OVj-yU-bef" id="bwa-V6-fet"/>
                         <outlet property="wageButton" destination="1dR-2g-gdA" id="EtM-fU-L5o"/>

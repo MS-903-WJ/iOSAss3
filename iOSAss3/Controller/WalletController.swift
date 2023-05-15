@@ -58,7 +58,6 @@ class WalletController: UIViewController, UITableViewDataSource, UITableViewDele
                   let balanceText = alert.textFields?[2].text,
                   let balance = Double(balanceText)
             else {
-                // Show some error message if input is not valid
                 return
             }
 
@@ -72,9 +71,7 @@ class WalletController: UIViewController, UITableViewDataSource, UITableViewDele
                 try realm.write {
                     realm.add(newAccount)
                 }
-                // Update the accounts list
                 self.accounts = realm.objects(Account.self)
-                // Reload the table view to display the new account
                 self.tableView.reloadData()
             } catch {
                 print("Error saving account, \(error)")
@@ -102,21 +99,17 @@ class WalletController: UIViewController, UITableViewDataSource, UITableViewDele
             cell.configure(account: account)
         }
 
-        // 设置单元格背景颜色为透明
         cell.backgroundColor = .clear
 
-        // 在 contentView 上添加一个新的背景视图
         let backgroundView = UIView(frame: CGRect(x: 0, y: 0, width: cell.bounds.width, height: cell.bounds.height - 10))
         backgroundView.layer.cornerRadius = 10
         backgroundView.layer.masksToBounds = true
 
-        // 创建一个渐变层，设置随机颜色和方向
         let gradientLayer = CAGradientLayer()
         gradientLayer.frame = backgroundView.bounds
         gradientLayer.setRandomColors()
         gradientLayer.setRandomDirection()
 
-        // 将渐变层添加到 backgroundView 的 layer 上
         backgroundView.layer.insertSublayer(gradientLayer, at: 0)
 
         cell.contentView.addSubview(backgroundView)

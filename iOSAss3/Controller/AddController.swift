@@ -11,7 +11,6 @@ import UIKit
 
 class AddController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
     @IBOutlet var segmentedControl: UISegmentedControl!
-    @IBOutlet var transferView: UIView!
     @IBOutlet var incomeView: UIView!
     @IBOutlet var expenseView: UIView!
     
@@ -108,32 +107,26 @@ class AddController: UIViewController, UIPickerViewDataSource, UIPickerViewDeleg
         
         datePicker.backgroundColor = UIColor.systemGray6
         dateButton.titleLabel?.font = UIFont.systemFont(ofSize: 12)
-        // 创建一个透明的覆盖视图，用于捕捉点击事件
         overlayView = UIView(frame: view.bounds)
         overlayView.backgroundColor = UIColor.clear
         overlayView.isHidden = true
         view.addSubview(overlayView)
 
-        // 将 datePicker 添加到覆盖视图上
         view.addSubview(datePicker)
         view.addSubview(accountPicker)
 
-        // 为覆盖视图添加点击手势识别器
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(overlayViewTapped))
         overlayView.addGestureRecognizer(tapGestureRecognizer)
-        // 为覆盖视图添加点击手势识别器
         let tapGestureRecognizer2 = UITapGestureRecognizer(target: self, action: #selector(overlayViewTapped2))
         overlayView.addGestureRecognizer(tapGestureRecognizer)
         
         expenseView.isHidden = false
         incomeView.isHidden = true
-        transferView.isHidden = true
         
         accountPicker.isHidden = true
         accountPicker.dataSource = self
         accountPicker.delegate = self
         
-        // 设置渐变颜色
         gradientLayer.colors = [
             UIColor.clear.cgColor,
             UIColor.white.cgColor,
@@ -141,17 +134,13 @@ class AddController: UIViewController, UIPickerViewDataSource, UIPickerViewDeleg
             UIColor.clear.cgColor
         ]
         
-        // 设置开始和结束的位置
         gradientLayer.locations = [0, 0.4, 0.6, 1]
         
-        // 设置渐变的方向（从上到下）
         gradientLayer.startPoint = CGPoint(x: 0.5, y: 0)
         gradientLayer.endPoint = CGPoint(x: 0.5, y: 1)
         
-        // 设置渐变层的大小
         gradientLayer.frame = accountPicker.bounds
         
-        // 将渐变层添加到accountPicker的背景
         accountPicker.layer.mask = gradientLayer
 
         let realm = try! Realm()
@@ -163,7 +152,6 @@ class AddController: UIViewController, UIPickerViewDataSource, UIPickerViewDeleg
         gradientLayer.frame = accountPicker.bounds
     }
 
-    // UIPickerViewDataSource
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
@@ -172,7 +160,6 @@ class AddController: UIViewController, UIPickerViewDataSource, UIPickerViewDeleg
         return accounts.count
     }
 
-    // UIPickerViewDelegate
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return accounts[row].name
     }
@@ -191,27 +178,21 @@ class AddController: UIViewController, UIPickerViewDataSource, UIPickerViewDeleg
         accountPicker.isHidden = !accountPicker.isHidden
         overlayView.isHidden = !overlayView.isHidden
         if !overlayView.isHidden {
-            // 将 overlayView 移到 accountPicker 的下方
             view.insertSubview(overlayView, belowSubview: accountPicker)
         }
     }
     
     @objc func buttonClicked(_ sender: UIButton) {
-        // 取消上一个按钮的背景颜色
         selectedButton?.backgroundColor = nil
         selectedButton?.layer.cornerRadius = 0.0 // reset the cornerRadius
         
-        // 设置新的按钮的背景颜色
         sender.backgroundColor = randomGradientColor()
         
-        // 使按钮呈现圆形
         sender.layer.cornerRadius = sender.frame.size.height / 2
         sender.clipsToBounds = true // This will make sure the button is clipped to a round shape
         
-        // 保存当前选中的按钮和按钮信息
         selectedButton = sender
         if let categoryLabel = sender.superview?.viewWithTag(200) as? UILabel {
-            // 获取标签的文本并保存到 selectedButtonInfo
             selectedButtonInfo = categoryLabel.text
         }
     }
@@ -219,7 +200,7 @@ class AddController: UIViewController, UIPickerViewDataSource, UIPickerViewDeleg
     @IBAction func segmentedControlValueChanged(_ sender: UISegmentedControl) {
         expenseView.isHidden = true
         incomeView.isHidden = true
-        transferView.isHidden = true
+        
         switch sender.selectedSegmentIndex {
         case 0:
             expenseView.isHidden = false
@@ -231,10 +212,7 @@ class AddController: UIViewController, UIPickerViewDataSource, UIPickerViewDeleg
             buttonClicked(wageButton)
             currentSegment = "income"
             moneyLabel.text = moneyLabelState
-        case 2:
-            transferView.isHidden = false
-            currentSegment = "transfer"
-            moneyLabel.text = moneyLabelState
+
         default:
             break
         }
@@ -254,7 +232,6 @@ class AddController: UIViewController, UIPickerViewDataSource, UIPickerViewDeleg
     
     @objc func equalButtonClicked(_ sender: UIButton) {
         if sender.titleLabel?.text == "SAVE" {
-            // 打印被点击的分类按钮值信息，note text field信息和money label信息
             print("Current Segment: \(currentSegment)")
             print("Selected Category: \(selectedButtonInfo ?? "Food")")
             print("Note: \(notesTextField.text ?? "No Note")")
@@ -268,14 +245,12 @@ class AddController: UIViewController, UIPickerViewDataSource, UIPickerViewDeleg
             if let dateTitle = dateButton.title(for: .normal),
                let date = dateFormatter.date(from: dateTitle)
             {
-                // 获取当前时间的时分秒
                 let now = Date()
                 let calendar = Calendar.current
                 let hour = calendar.component(.hour, from: now)
                 let minute = calendar.component(.minute, from: now)
                 let second = calendar.component(.second, from: now)
 
-                // 将时分秒添加到用户选择的日期
                 var dateComponents = calendar.dateComponents([.year, .month, .day], from: date)
                 dateComponents.hour = hour
                 dateComponents.minute = minute
@@ -321,17 +296,14 @@ class AddController: UIViewController, UIPickerViewDataSource, UIPickerViewDeleg
             let accountName = accountButton.title(for: .normal) ?? "default"
             updateAccountBalance(accountName: accountName, transaction: transaction)
             
-            // 返回上一页
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: "reloadTableView"), object: nil)
             
             dismiss(animated: true, completion: nil)
         } else {
-            // 执行计算操作
             if let calculate = moneyLabel.text {
                 let re = calculateExpression(calculate)
                 moneyLabel.text = re
 
-                // 更改等号按钮标题为 "SAVE"
                 equalButton.setTitle("SAVE", for: .normal)
             }
         }
@@ -372,7 +344,6 @@ class AddController: UIViewController, UIPickerViewDataSource, UIPickerViewDeleg
                         if firstCharacter.isNumber {
                             moneyLabel.text = moneyLabel.text! + value
                         } else if value == "." {
-                            // 获取最后一个运算符的位置
                             var lastOperatorIndex: String.Index?
                             for (index, char) in moneyLabel.text!.enumerated() {
                                 if !char.isNumber && char != "." {
@@ -380,7 +351,6 @@ class AddController: UIViewController, UIPickerViewDataSource, UIPickerViewDeleg
                                 }
                             }
                             
-                            // 获取当前操作数
                             let currentOperand: String
                             if let lastOperatorIndex = lastOperatorIndex {
                                 currentOperand = String(moneyLabel.text![moneyLabel.text!.index(after: lastOperatorIndex)...])
@@ -388,14 +358,11 @@ class AddController: UIViewController, UIPickerViewDataSource, UIPickerViewDeleg
                                 currentOperand = moneyLabel.text!
                             }
                             
-                            // 检查当前操作数是否已存在有效的小数点
                             if !currentOperand.contains(".") {
                                 moneyLabel.text = moneyLabel.text! + value
                             }
                         } else {
-                            // 检查并替换已有的运算符
                             if lastCharacter.isNumber {
-                                // 查找第一个运算符
                                 var operatorFound: Character?
                                 for char in moneyLabel.text! {
                                     if !char.isNumber && char != "." {
@@ -405,7 +372,6 @@ class AddController: UIViewController, UIPickerViewDataSource, UIPickerViewDeleg
                                 }
                                 
                                 if let operatorFound = operatorFound {
-                                    // 检查是否满足两个数字和一个运算符的条件
                                     let components = moneyLabel.text!.split(separator: operatorFound)
                                     if components.count == 2 {
                                         if let calculate = moneyLabel.text {
@@ -432,11 +398,9 @@ class AddController: UIViewController, UIPickerViewDataSource, UIPickerViewDeleg
     }
 
     func calculateExpression(_ inputString: String) -> String? {
-        // 匹配操作数和操作符的正则表达式
         let pattern = "([-+]?\\d*\\.?\\d+|[+-])"
         let regex = try! NSRegularExpression(pattern: pattern, options: [])
 
-        // 将操作数和操作符存储在数组中
         let matches = regex.matches(in: inputString, options: [], range: NSRange(location: 0, length: inputString.count))
         var components: [String] = []
         for match in matches {
@@ -447,13 +411,11 @@ class AddController: UIViewController, UIPickerViewDataSource, UIPickerViewDeleg
             }
         }
 
-        // 检查数组中是否有至少两个操作数和一个操作符
         if components.count < 3 {
             print("Invalid input string format")
             return nil
         }
 
-        // 提取操作数和操作符
         guard let firstNumber = Decimal(string: components[0]),
               let secondNumber = Decimal(string: components[2])
         else {
@@ -462,7 +424,6 @@ class AddController: UIViewController, UIPickerViewDataSource, UIPickerViewDeleg
         }
         let operation = components[1]
 
-        // 根据操作符执行相应的操作
         let result: Decimal
         if operation == "+" {
             result = firstNumber - secondNumber
@@ -478,7 +439,6 @@ class AddController: UIViewController, UIPickerViewDataSource, UIPickerViewDeleg
         datePicker.isHidden = !datePicker.isHidden
         overlayView.isHidden = !overlayView.isHidden
         if !overlayView.isHidden {
-            // 将 overlayView 移到 datePicker 的下方
             view.insertSubview(overlayView, belowSubview: datePicker)
         }
     }
@@ -493,7 +453,6 @@ class AddController: UIViewController, UIPickerViewDataSource, UIPickerViewDeleg
     @objc func handleTapOutsideDatePicker(_ sender: UITapGestureRecognizer) {
         let location = sender.location(in: view)
 
-        // 如果点击位置在 datePicker 之外，隐藏 datePicker
         if datePicker.isHidden == false {
             if !datePicker.frame.contains(location) {
                 datePicker.isHidden = true
@@ -537,13 +496,7 @@ class AddController: UIViewController, UIPickerViewDataSource, UIPickerViewDeleg
                     account.balance += transaction.amount
                 case "expense":
                     account.balance -= transaction.amount
-//                case "transfer":
-//                    // 如果是转账，需要处理转入和转出两个账户的 balance
-//                    // 假设在 Transaction 对象中有一个名为 `transferToAccountName` 的属性存储了转入账户的名称
-//                    if let transferToAccount = realm.objects(Account.self).filter("name == %@", transaction.transferToAccountName).first {
-//                        account.balance -= transaction.amount
-//                        transferToAccount.balance += transaction.amount
-//                    }
+
                 default:
                     break
                 }

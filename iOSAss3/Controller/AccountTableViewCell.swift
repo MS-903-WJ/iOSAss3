@@ -14,7 +14,6 @@ class AccountTableViewCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
         self.setupCardStyle()
     }
 
@@ -40,13 +39,11 @@ class AccountTableViewCell: UITableViewCell {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
-        // 创建一个带圆角的自定义视图作为选中背景
         let selectedBackgroundView = UIView()
         selectedBackgroundView.backgroundColor = UIColor(white: 0.9, alpha: 1)
         selectedBackgroundView.layer.cornerRadius = 10
         selectedBackgroundView.clipsToBounds = true
 
-        // 将自定义视图设置为选中背景视图
         self.selectedBackgroundView = selectedBackgroundView
     }
 }
