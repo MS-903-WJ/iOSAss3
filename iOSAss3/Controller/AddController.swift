@@ -430,7 +430,6 @@ class AddController: UIViewController, UIPickerViewDataSource, UIPickerViewDeleg
         } else {
             result = firstNumber + secondNumber
         }
-        print("结果为：\(result)")
 
         return "\(result)"
     }
